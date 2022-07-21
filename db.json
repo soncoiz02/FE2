@@ -1,0 +1,83 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "iPhone 11 64GB I Chính hãng VN/A",
+      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791661/phone/mohy8dg1jqr6pelrnh0n.png",
+      "price": 18000000,
+      "salePrice": 10790000,
+      "rate": 72,
+      "longDesc": "",
+      "specialDesc": "",
+      "shortDesc": " Mô tả ngắn: Trước khi mua bất kỳ chiếc điện thoại nào, người dùng cũng sẽ quan tâm đến thiết kế sản phẩm trước. Với phiên bản A73, Samsung đã tạo nên một chiếc smartphone với vẻ ngoài mang đến cảm giác sang trọng và tinh tế.",
+      "status": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "name": "iPhone 11 64GB I Chính hãng VN/A",
+      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791661/phone/mohy8dg1jqr6pelrnh0n.png",
+      "price": 18000000,
+      "salePrice": 10790000,
+      "rate": 72,
+      "longDesc": "",
+      "specialDesc": "",
+      "shortDesc": " Mô tả ngắn: Trước khi mua bất kỳ chiếc điện thoại nào, người dùng cũng sẽ quan tâm đến thiết kế sản phẩm trước. Với phiên bản A73, Samsung đã tạo nên một chiếc smartphone với vẻ ngoài mang đến cảm giác sang trọng và tinh tế.",
+      "status": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 3,
+      "name": "iPhone 11 64GB I Chính hãng VN/A",
+      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791661/phone/mohy8dg1jqr6pelrnh0n.png",
+      "price": 18000000,
+      "salePrice": 10790000,
+      "rate": 72,
+      "longDesc": "",
+      "specialDesc": "",
+      "shortDesc": " Mô tả ngắn: Trước khi mua bất kỳ chiếc điện thoại nào, người dùng cũng sẽ quan tâm đến thiết kế sản phẩm trước. Với phiên bản A73, Samsung đã tạo nên một chiếc smartphone với vẻ ngoài mang đến cảm giác sang trọng và tinh tế.",
+      "status": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 4,
+      "name": "iPhone 11 64GB I Chính hãng VN/A",
+      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791661/phone/mohy8dg1jqr6pelrnh0n.png",
+      "price": 18000000,
+      "salePrice": 10790000,
+      "rate": 72,
+      "longDesc": "",
+      "specialDesc": "",
+      "shortDesc": " Mô tả ngắn: Trước khi mua bất kỳ chiếc điện thoại nào, người dùng cũng sẽ quan tâm đến thiết kế sản phẩm trước. Với phiên bản A73, Samsung đã tạo nên một chiếc smartphone với vẻ ngoài mang đến cảm giác sang trọng và tinh tế.",
+      "status": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 5,
+      "name": "iPhone 11 64GB I Chính hãng VN/A",
+      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791661/phone/mohy8dg1jqr6pelrnh0n.png",
+      "price": 18000000,
+      "salePrice": 10790000,
+      "rate": 72,
+      "longDesc": "",
+      "specialDesc": "",
+      "shortDesc": " Mô tả ngắn: Trước khi mua bất kỳ chiếc điện thoại nào, người dùng cũng sẽ quan tâm đến thiết kế sản phẩm trước. Với phiên bản A73, Samsung đã tạo nên một chiếc smartphone với vẻ ngoài mang đến cảm giác sang trọng và tinh tế.",
+      "status": 1,
+      "categoryId": 1
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Điện thoại"
+    },
+    {
+      "id": 2,
+      "name": "Máy tính bảng"
+    },
+    {
+      "id": 3,
+      "name": "Laptop"
+    }
+  ]
+}
