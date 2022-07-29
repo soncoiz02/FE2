@@ -9,7 +9,7 @@
       "rate": 72,
       "longDesc": "",
       "specialDesc": "",
-      "shortDesc": " Mô tả ngắn: Trước khi mua bất kỳ chiếc điện thoại nào, người dùng cũng sẽ quan tâm đến thiết kế sản phẩm trước. Với phiên bản A73, Samsung đã tạo nên một chiếc smartphone với vẻ ngoài mang đến cảm giác sang trọng và tinh tế.",
+      "shortDesc": "[HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá lên tới 1.000.000đ",
       "status": 1,
       "categoryId": 1
     },
@@ -22,7 +22,7 @@
       "rate": 72,
       "longDesc": "",
       "specialDesc": "",
-      "shortDesc": " Mô tả ngắn: Trước khi mua bất kỳ chiếc điện thoại nào, người dùng cũng sẽ quan tâm đến thiết kế sản phẩm trước. Với phiên bản A73, Samsung đã tạo nên một chiếc smartphone với vẻ ngoài mang đến cảm giác sang trọng và tinh tế.",
+      "shortDesc": "[HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá lên tới 1.000.000đ",
       "status": 1,
       "categoryId": 1
     },
@@ -35,7 +35,7 @@
       "rate": 72,
       "longDesc": "",
       "specialDesc": "",
-      "shortDesc": " Mô tả ngắn: Trước khi mua bất kỳ chiếc điện thoại nào, người dùng cũng sẽ quan tâm đến thiết kế sản phẩm trước. Với phiên bản A73, Samsung đã tạo nên một chiếc smartphone với vẻ ngoài mang đến cảm giác sang trọng và tinh tế.",
+      "shortDesc": "[HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá lên tới 1.000.000đ",
       "status": 1,
       "categoryId": 1
     },
@@ -48,7 +48,7 @@
       "rate": 72,
       "longDesc": "",
       "specialDesc": "",
-      "shortDesc": " Mô tả ngắn: Trước khi mua bất kỳ chiếc điện thoại nào, người dùng cũng sẽ quan tâm đến thiết kế sản phẩm trước. Với phiên bản A73, Samsung đã tạo nên một chiếc smartphone với vẻ ngoài mang đến cảm giác sang trọng và tinh tế.",
+      "shortDesc": "[HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá lên tới 1.000.000đ",
       "status": 1,
       "categoryId": 1
     },
@@ -61,9 +61,31 @@
       "rate": 72,
       "longDesc": "",
       "specialDesc": "",
-      "shortDesc": " Mô tả ngắn: Trước khi mua bất kỳ chiếc điện thoại nào, người dùng cũng sẽ quan tâm đến thiết kế sản phẩm trước. Với phiên bản A73, Samsung đã tạo nên một chiếc smartphone với vẻ ngoài mang đến cảm giác sang trọng và tinh tế.",
+      "shortDesc": "[HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá lên tới 1.000.000đ",
       "status": 1,
       "categoryId": 1
+    },
+    {
+      "name": "Asus Vivobook",
+      "price": 16000000,
+      "salePrice": 0,
+      "categoryId": 3,
+      "specialDesc": "cvghjbklhgfxcvbnm",
+      "longDesc": "",
+      "img": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1658452262/anhhtus/pa4fcloplfbmtgsfhubt.png",
+      "status": 1,
+      "id": 6
+    },
+    {
+      "name": "dsadsaass1235",
+      "price": 16000000,
+      "salePrice": 150000,
+      "categoryId": 2,
+      "specialDesc": "",
+      "longDesc": "",
+      "img": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1658454167/anhhtus/pbxhl4wji6xh6bc4ofmz.png",
+      "status": 1,
+      "id": 7
     }
   ],
   "categories": [

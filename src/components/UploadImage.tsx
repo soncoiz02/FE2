@@ -13,12 +13,21 @@ type PropsType = {
 const UploadImage = ({ getImgLink, previewImg, setPreviewImg }: PropsType) => {
   const handleChangeImage = (e: any) => {
     const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      setPreviewImg(reader.result as string);
-      uploadImage(reader.result as string);
-    };
+    const imgType = ["image/jpeg", "image/png", "image/jpg"];
+    if (file) {
+      if (!imgType.includes(file.type)) {
+        return message.error("Sai định dạng ảnh");
+      }
+      if (file.size > 20480) {
+        return message.error("Kích thước ảnh quá lớn");
+      }
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        setPreviewImg(reader.result as string);
+        uploadImage(reader.result as string);
+      };
+    }
   };
 
   const uploadImage = async (base64Img: string) => {

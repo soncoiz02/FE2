@@ -4,6 +4,7 @@ import { FaSearch, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { BsHandbagFill } from "react-icons/bs";
 import { TbTruckDelivery } from "react-icons/tb";
 import logo from "../assets/img/logo.png";
+import { Link } from "react-router-dom";
 
 const HeaderWrapper = styled.div`
   background: #d70018;
@@ -58,7 +59,7 @@ const ListInfor = styled.div`
   gap: 0 10px;
 `;
 
-const InforItem = styled.a`
+const InforItem = styled(Link)`
   display: flex;
   align-items: center;
   gap: 0 5px;
@@ -66,6 +67,10 @@ const InforItem = styled.a`
   font-weight: 400;
   font-size: 14px;
   text-decoration: none;
+
+  &:hover {
+    color: white;
+  }
 
   & > svg {
     font-size: 20px;
@@ -76,18 +81,22 @@ const listInfor = [
   {
     icon: <FaPhoneAlt />,
     content: "Gọi mua hàng",
+    path: "#",
   },
   {
     icon: <FaMapMarkerAlt />,
     content: "Cửa hàng gần bạn",
+    path: "#",
   },
   {
     icon: <TbTruckDelivery />,
     content: "Tra cứu đơn hàng",
+    path: "#",
   },
   {
     icon: <BsHandbagFill />,
     content: "Giỏ hàng",
+    path: "/cart",
   },
 ];
 const Header = () => {
@@ -105,7 +114,7 @@ const Header = () => {
         </SearchWrapper>
         <ListInfor>
           {listInfor.map((item, index) => (
-            <InforItem key={index} href="#">
+            <InforItem key={index} to={item.path}>
               {item.icon} {item.content}
             </InforItem>
           ))}
