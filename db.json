@@ -1,25 +1,23 @@
 {
   "products": [
     {
-      "id": 1,
+      "shortDesc": "[HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá lên tới 1.000.000đ",
       "name": "iPhone 11 64GB I Chính hãng VN/A",
-      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791661/phone/mohy8dg1jqr6pelrnh0n.png",
       "price": 18000000,
       "salePrice": 10790000,
-      "rate": 72,
+      "categoryId": 1,
+      "specialDesc": "<p>ksjakdsjdas</p><p><em>áidsaisad</em></p><p>0-<strong>dsadsasad</strong></p>",
       "longDesc": "",
-      "specialDesc": "",
-      "shortDesc": "[HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá lên tới 1.000.000đ",
+      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791661/phone/mohy8dg1jqr6pelrnh0n.png",
       "status": 1,
-      "categoryId": 1
+      "id": 1
     },
     {
       "id": 2,
-      "name": "iPhone 11 64GB I Chính hãng VN/A",
-      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791661/phone/mohy8dg1jqr6pelrnh0n.png",
-      "price": 18000000,
-      "salePrice": 10790000,
-      "rate": 72,
+      "name": "iPhone 13 Pro Max 128GB | Chính hãng VN/A",
+      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791661/phone/hxyq4rf03hdnfy0s70fv.png",
+      "price": 34990000,
+      "salePrice": 27390000,
       "longDesc": "",
       "specialDesc": "",
       "shortDesc": "[HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá lên tới 1.000.000đ",
@@ -28,11 +26,10 @@
     },
     {
       "id": 3,
-      "name": "iPhone 11 64GB I Chính hãng VN/A",
-      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791661/phone/mohy8dg1jqr6pelrnh0n.png",
-      "price": 18000000,
-      "salePrice": 10790000,
-      "rate": 72,
+      "name": "iPhone 12 Pro Max 128GB I Chính hãng VN/A",
+      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791661/phone/sardpji4ltiglhsxbevr.png",
+      "price": 32990000,
+      "salePrice": 25590000,
       "longDesc": "",
       "specialDesc": "",
       "shortDesc": "[HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá lên tới 1.000.000đ",
@@ -41,11 +38,10 @@
     },
     {
       "id": 4,
-      "name": "iPhone 11 64GB I Chính hãng VN/A",
-      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791661/phone/mohy8dg1jqr6pelrnh0n.png",
-      "price": 18000000,
-      "salePrice": 10790000,
-      "rate": 72,
+      "name": "iPhone 13 128GB | Chính hãng VN/A",
+      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791660/phone/jtzkgnadaibwspsiliwg.png",
+      "price": 30990000,
+      "salePrice": 19590000,
       "longDesc": "",
       "specialDesc": "",
       "shortDesc": "[HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá lên tới 1.000.000đ",
@@ -54,11 +50,34 @@
     },
     {
       "id": 5,
-      "name": "iPhone 11 64GB I Chính hãng VN/A",
-      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791661/phone/mohy8dg1jqr6pelrnh0n.png",
-      "price": 18000000,
-      "salePrice": 10790000,
-      "rate": 72,
+      "name": "iPhone 12 64GB I Chính hãng VN/A",
+      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791661/phone/whwtcir4dgxcleilqjip.png",
+      "price": 22990000,
+      "salePrice": 15990000,
+      "longDesc": "",
+      "specialDesc": "",
+      "shortDesc": "[HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá lên tới 1.000.000đ",
+      "status": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 6,
+      "name": "iPhone 11 128GB I Chính hãng VN/A",
+      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791659/phone/fpukckjw5wqi6x7vvk5d.png",
+      "price": 19900000,
+      "salePrice": 14190000,
+      "longDesc": "",
+      "specialDesc": "",
+      "shortDesc": "[HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá lên tới 1.000.000đ",
+      "status": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 7,
+      "name": "OPPO Reno6 Z 5G",
+      "img": "https://res.cloudinary.com/deqhqs09b/image/upload/v1657791659/phone/j7qz4u6nqhgjr8h3rsd5.png",
+      "price": 9490000,
+      "salePrice": 6790000,
       "longDesc": "",
       "specialDesc": "",
       "shortDesc": "[HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá lên tới 1.000.000đ",
@@ -74,7 +93,7 @@
       "longDesc": "",
       "img": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1658452262/anhhtus/pa4fcloplfbmtgsfhubt.png",
       "status": 1,
-      "id": 6
+      "id": 8
     },
     {
       "name": "dsadsaass1235",
@@ -85,7 +104,31 @@
       "longDesc": "",
       "img": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1658454167/anhhtus/pbxhl4wji6xh6bc4ofmz.png",
       "status": 1,
-      "id": 7
+      "id": 9
+    },
+    {
+      "shortDesc": "sadsadasdsadsa",
+      "name": "Club Feece",
+      "price": 16000000,
+      "salePrice": 15000000,
+      "categoryId": 2,
+      "specialDesc": "<p>dsafdghhsdf</p><p>dsalkjhdsuaygu</p><p><strong>ewqewqewqewqewq</strong></p><p><strong><em>dsauquqjjqasdasd</em></strong></p>",
+      "longDesc": "<p>dsasda</p>",
+      "img": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1659760015/anhhtus/owt98ithrisfcvphw5ic.png",
+      "status": 1,
+      "id": 10
+    },
+    {
+      "shortDesc": "",
+      "name": "Màn hình đồ hoạ HUAWEI MateView 28",
+      "price": 18990000,
+      "salePrice": 15990000,
+      "categoryId": 3,
+      "specialDesc": "<ul><li>Màn Hình 4K+ Trung Thực trải nghiệm hình ảnh sống động, sắc nét</li><li>HUAWEI Smart Bar điều khiển cảm ứng trực quan, dễ dàng tương tác</li><li>Kết nối liền mạch giữa các thiết bị, trình chiếu không dây nâng tầm hiệu quả</li><li>Thiết kế thanh lịch, tối giản hoà hợp với mọi không gian làm việc.</li></ul><p><br></p>",
+      "longDesc": "<h2><strong>Màn hình Huawei Mateview – Màn hình đồ họa chuyên nghiệp</strong></h2><p>Công việc đồ họa đòi hỏi các yêu cầu cao về màn hình, đặc biệt là màu sắc.&nbsp;<strong>Màn hình Huawei Mateview&nbsp;</strong>được Huawei thiết kế dành riêng vời nhiều công nghệ màn hình và màu sắc, thích hợp với công việc đồ họa chuyên nghiệp.</p><h3><strong>Màn hình sang trọng, tỉ lệ 3:2 độc đáo</strong></h3><p><strong>Huawei Mateview</strong>&nbsp;sở hữu một thiết kế tối giản với phần khung và chân đế được hoàn thiện từ hợp kim nhôm cao cấp cùng khung viền siêu mỏng mang lại không gian hiển thị lớn hơn. Màn hình đồ họa này với tỉ lệ hiển thị trên thân máy lên tới 94%.</p><p>&gt;&gt;&gt;&nbsp;<strong>Xem thêm</strong>:&nbsp;<a href=\"https://cellphones.com.vn/man-hinh-huawei-mateview-gt-34-inch.html\" rel=\"noopener noreferrer\" target=\"_blank\">Màn hình&nbsp;Huawei Mateview GT</a>&nbsp;thiết kế sáng tạo cùng độ hiển thị vượt trội</p><p><br></p><p><br></p><p>Màn hình máy tính Huawei Mateview&nbsp;này có tỉ lệ hiển thị 3:2 nổi bật, khác với tỉ lệ 16:9 tiêu chuẩn trên các dòng màn hình khác hiện có trên thị trường. Tỉ lệ này cho phép màn hình tối ưu hiển thị theo chiều dọc, nhờ đó người dùng có thể xem được nhiều thông tin hơn mà không cần cuộn màn hình.</p><h3><strong>Hiển thị sắc nét, gàm màu DCI-P3 98%</strong></h3><p><a href=\"https://cellphones.com.vn/man-hinh/huawei.html\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>Màn hình Huawei</strong></a>&nbsp;Mateview được trang bị độ phân giải cao mang lại khả năng hiển thị sắc nét. Màn hình với mật độ điểm ảnh cao cùng gam màu DCI-P3 98% mang lại dải màu rộng, đáp ứng tốt các nhu cầu chỉnh sửa với dài màu chân thực và chính xác tới ∆E&lt;2.</p><p><br></p><p><br></p><p>Ngoài tam với chứng nhận Display HDR 400, màn hình HUAWEI MateView giúp tối ưu hóa màu sắc. Cùng với đó là độ sáng tối đa lên đến 500 nits giúp hiển thị rõ ràng đến từng chi tiết.</p><p>Màn hình Huawei Mateview còn được trang bị tính năng bảo vật mắt TUV Rheinland giúp đôi mắt người dùng khỏe hơn.</p><h3><strong>Kết nối không dây tiện lợi, thanh tác vụ thông minh</strong></h3><p><br></p><p><br></p><p>Màn hình Huawei Mateview sở hữu một kết nối không dây thông minh, Với thanh tác vụ Smart Bar, người dùng có thể chuyển đổi nhanh chóng từ màn hình trình chiếu sang máy tính xác tay, điện thoại hoặc ngược lại. Lưu ý, kết nối chỉ khả dụng trên model phiên bản không dây ( HSN – CBA)</p><h2><strong>Mua màn hình Huawei Mateview giá rẻ tại CellphoneS</strong></h2><p><strong>Màn hình Huawei Mateview chính hãng</strong>&nbsp;với kích thước lớn, độ chính xác cao sẽ là một màn hình chuyên dùng cho dân đồ họa chuyên nghiệp. nếu bạn đang tìm một mẫu màn hình như vậy cho công việc, đến ngay CellphoneS để mua ngay với giá ưu đãi cùng nhiều khuyến mãi hấp dẫn.</p><p><br></p>",
+      "img": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1660524373/anhhtus/excblrrufuzflokp1xoz.jpg",
+      "status": 1,
+      "id": 11
     }
   ],
   "categories": [
@@ -100,6 +143,96 @@
     {
       "id": 3,
       "name": "Laptop"
+    }
+  ],
+  "users": [
+    {
+      "email": "soncoiz3107@gmail.com",
+      "password": "$2a$10$NXDvf2SFuoRBXyg8dq3/J.Z9sR.2qba6h1O78BtvIPMR8elZGZ.Jy",
+      "phone": "0911998563",
+      "fullname": "Trần Sơn",
+      "role": 1,
+      "id": 1
+    },
+    {
+      "email": "soncoiz@gmail.com",
+      "password": "$2a$10$BgDXhyCWVVBQgQR.GtyWlOiSBp69yn53oHVkZqd5BJ.lGXO5Qsdq.",
+      "fullname": "Trần Sơn",
+      "phone": "0911998563",
+      "id": 2
+    },
+    {
+      "email": "soncoiz02@gmail.com",
+      "password": "$2a$10$BEmGe7Itkr8G11v2HpjTXu2/XzncKz/EsVr.CBWyUK4lf1ScoVM.q",
+      "fullname": "Trần Sơn",
+      "phone": "0911998563",
+      "role": 0,
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "userId": 1,
+      "username": "Trần Sơn",
+      "productId": 1,
+      "content": "Đây là bình luận của người dùng 1"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "productId": 1,
+      "username": "Trần Sơn",
+      "content": "Đây là bình luận của người dùng 2"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "productId": 1,
+      "username": "Trần Sơn",
+      "content": "Đây là bình luận của người dùng 3"
+    },
+    {
+      "productId": 1,
+      "userId": 1,
+      "content": "dsadsadsadsa",
+      "username": "Trần Sơn",
+      "id": 4
+    },
+    {
+      "productId": 1,
+      "userId": 1,
+      "content": "alo",
+      "username": "Trần Sơn",
+      "id": 5
+    },
+    {
+      "productId": 2,
+      "userId": 1,
+      "content": "dsadsazzzz",
+      "username": "Trần Sơn",
+      "id": 6
+    },
+    {
+      "productId": 3,
+      "userId": 1,
+      "content": "asdasdsasd",
+      "username": "Trần Sơn",
+      "id": 7
+    },
+    {
+      "productId": 2,
+      "userId": 1,
+      "content": "zlalaoqo",
+      "username": "Trần Sơn",
+      "id": 8
+    },
+    {
+      "productId": 10,
+      "userId": 1,
+      "content": "qưeqweasdas",
+      "username": "Trần Sơn",
+      "id": 9
     }
   ]
 }

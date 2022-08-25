@@ -1,3 +1,5 @@
+import { CategoryType } from "./category";
+
 export type ProductType = {
   id: number;
   name: string;
@@ -9,6 +11,7 @@ export type ProductType = {
   img: string;
   categoryId: number;
   status: number;
+  comments: CommentType[];
 };
 
 export type ProductCreateType = {
@@ -34,7 +37,29 @@ export type CartType = {
   name: string;
   salePrice: number;
   price: number;
-  finalPrice: number;
+  totalPrice: number;
   img: string;
   quantity: number;
+};
+
+export type CommentType = {
+  id?: number;
+  content: string;
+  productId: number;
+  userId: number;
+  username: string;
+};
+
+export type ProductWithCommentType = {
+  id: number;
+  name: string;
+  price: number;
+  salePrice: number;
+  shortDesc: string;
+  longDesc: string;
+  specialDesc: string;
+  img: string;
+  categoryId: number;
+  status: number;
+  comments: CommentType[];
 };

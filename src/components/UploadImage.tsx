@@ -18,7 +18,7 @@ const UploadImage = ({ getImgLink, previewImg, setPreviewImg }: PropsType) => {
       if (!imgType.includes(file.type)) {
         return message.error("Sai định dạng ảnh");
       }
-      if (file.size > 20480) {
+      if (file.size > 102400) {
         return message.error("Kích thước ảnh quá lớn");
       }
       const reader = new FileReader();

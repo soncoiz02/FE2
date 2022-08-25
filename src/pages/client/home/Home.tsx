@@ -1,56 +1,115 @@
 import {
   LaptopOutlined,
   PhoneOutlined,
-  SoundOutlined,
+  StarFilled,
   TabletOutlined,
 } from "@ant-design/icons";
 import styled from "styled-components";
 
 import banner from "../../../assets/img/Rectangle.png";
 
-import { Col, Menu, MenuProps, Row } from "antd";
-import { getProducts } from "../../../api/product";
+import { MenuUnfoldOutlined } from "@ant-design/icons";
+import { Col, Menu, MenuProps, Row, Select } from "antd";
 import { useEffect, useState } from "react";
-import { ProductType } from "../../../types/product";
-import { Link } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
+import { getCategories } from "../../../api/category";
+import {
+  getAllComments,
+  getProductByCategory,
+  getProductComments,
+  getProducts,
+  getProductWithCommentByCate,
+  sortProduct,
+} from "../../../api/product";
+import { CategoryType } from "../../../types/category";
+import { ProductType, ProductWithCommentType } from "../../../types/product";
 import { formatPrice } from "../../../utils/formatPrice";
 
-const items: MenuProps["items"] = [
-  {
-    key: "phone",
-    icon: <PhoneOutlined />,
-    label: "Điện thoại",
-  },
-  {
-    key: "laptop",
-    icon: <LaptopOutlined />,
-    label: "Laptop",
-  },
-  {
-    key: "tablet",
-    icon: <TabletOutlined />,
-    label: "Máy tính bảng",
-  },
-  {
-    key: "sound",
-    icon: <SoundOutlined />,
-    label: "Âm thanh",
-  },
-];
+const listIcon = [<PhoneOutlined />, <LaptopOutlined />, <TabletOutlined />];
 
 const Home = () => {
-  const [products, setProducts] = useState<ProductType[]>([]);
-
+  const [products, setProducts] = useState<ProductWithCommentType[]>([]);
+  const [menuItem, setMenuItem] = useState<MenuProps["items"]>([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [listCommentLength, setListCommentLength] = useState<number[]>([]);
   useEffect(() => {
-    handleGetProducts();
-  }, []);
+    if (searchParams.get("cate")) {
+      handleGetProductByCategory(searchParams.get("cate"));
+    } else {
+      handleGetProducts();
+    }
+    handleGetCategory();
+  }, [searchParams.get("cate")]);
+
+  const handleGetProductByCategory = async (category: string) => {
+    try {
+      const { data } = await getProductWithCommentByCate(category);
+      setProducts(
+        data.filter((item: ProductWithCommentType) => item.status === 1)
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleGetProducts = async () => {
     try {
       const { data } = await getProducts();
-      setProducts(data.filter((item) => item.status === 1));
+      const activeData = data.filter((item: ProductType) => item.status === 1);
+      setProducts(activeData);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const handleGetCategory = async () => {
+    try {
+      const { data } = await getCategories();
+      const menuItemByCate = data.map((item: CategoryType, index: number) => {
+        return {
+          key: item.id + 1,
+          icon: listIcon[index],
+          label: <Link to={`/?cate=${item.id}`}>{item.name}</Link>,
+        };
+      });
+      setMenuItem([
+        {
+          key: 1,
+          icon: <MenuUnfoldOutlined />,
+          label: <Link to={"/"}>Tất cả</Link>,
+        },
+        ...menuItemByCate,
+      ]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleGetSortProducts = async (sort: string, order: string) => {
+    try {
+      const { data } = await sortProduct(sort, order);
+      setProducts(data.filter((item: ProductType) => item.status === 1));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSort = (value: string) => {
+    switch (value) {
+      case "price-asc":
+        handleGetSortProducts("price", "asc");
+        break;
+      case "price-desc":
+        handleGetSortProducts("price", "desc");
+        break;
+      case "name-asc":
+        handleGetSortProducts("name", "asc");
+        break;
+      case "name-desc":
+        handleGetSortProducts("name", "desc");
+        break;
+      default:
+        handleGetProducts();
     }
   };
 
@@ -61,16 +120,27 @@ const Home = () => {
           mode="inline"
           defaultSelectedKeys={["1"]}
           defaultOpenKeys={["sub1"]}
-          items={items}
+          items={menuItem}
         />
         <Banner>
           <BannerImage src={banner} />
         </Banner>
       </HeroWrapper>
       <ListProductSide>
-        <Title>Danh sách điện thoại</Title>
+        <TitleSide>
+          <Title>Danh sách sản phẩm</Title>
+          <FilterSide>
+            <CustomsSelect placeholder="Sắp xếp theo" onChange={handleSort}>
+              <Select.Option value="all">Không</Select.Option>
+              <Select.Option value="price-desc">Giá cao - thấp</Select.Option>
+              <Select.Option value="price-asc">Giá thấp - cao</Select.Option>
+              <Select.Option value="name-asc">Tên A - Z</Select.Option>
+              <Select.Option value="name-desc">Tên Z - A</Select.Option>
+            </CustomsSelect>
+          </FilterSide>
+        </TitleSide>
         <Row gutter={16}>
-          {products.map((product) => (
+          {products.map((product: ProductType, index: number) => (
             <Col key={product.id} span={6}>
               <ProductItem>
                 <ImageCover>
@@ -92,6 +162,16 @@ const Home = () => {
                 {product.shortDesc && (
                   <ShortDesc>{product.shortDesc}</ShortDesc>
                 )}
+                <Rating>
+                  <ListStar>
+                    <StarFilled />
+                    <StarFilled />
+                    <StarFilled />
+                    <StarFilled />
+                    <StarFilled />
+                  </ListStar>
+                  <p>{product.comments.length} đánh giá</p>
+                </Rating>
               </ProductItem>
             </Col>
           ))}
@@ -100,6 +180,39 @@ const Home = () => {
     </Container>
   );
 };
+
+const ListStar = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Rating = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  width: 100%;
+  gap: 0 10px;
+
+  p {
+    margin: 0;
+  }
+`;
+
+const CustomsSelect = styled(Select)`
+  width: 150px;
+`;
+
+const FilterSide = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
+const TitleSide = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const ShortDesc = styled.div`
   width: 100%;
@@ -110,7 +223,7 @@ const ShortDesc = styled.div`
   color: #444444;
   font-size: 14px;
   font-weight: 500;
-  margin: 10px 0 50px 0;
+  margin-top: 10px;
   word-break: break-word;
 `;
 
@@ -137,6 +250,7 @@ const ProductItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
 `;
 
 const ProductName = styled(Link)`

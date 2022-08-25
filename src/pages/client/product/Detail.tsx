@@ -1,17 +1,25 @@
 import { ShoppingCartOutlined, StarOutlined } from "@ant-design/icons";
-import { Breadcrumb } from "antd";
+import { Avatar, Breadcrumb, Button, Form, Input, List } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { Dispatch } from "redux";
 import styled from "styled-components";
-import { getProduct } from "../../../api/product";
-import { ProductType } from "../../../types/product";
+import {
+  getProduct,
+  getProductByCategory,
+  getProductComments,
+  sendComment,
+} from "../../../api/product";
+import { CommentType, ProductType } from "../../../types/product";
 import { formatPrice } from "../../../utils/formatPrice";
 import { ADD_TO_CART } from "../../../redux/action";
-
+import cartSlice from "../cart/CartSlice";
+import parse from "html-react-parser";
+import useAuth, { User_Type } from "././../../../hooks/useAuth";
 const Detail = () => {
   const productId = useParams().id;
+  const [products, setProducts] = useState<ProductType[]>([]);
   const [product, setProduct] = useState<ProductType>({
     id: 0,
     name: "",
@@ -24,18 +32,37 @@ const Detail = () => {
     categoryId: 0,
     status: 0,
   });
+  const [comments, setComments] = useState<CommentType[]>([]);
+  const { token } = useAuth();
+  const [user, setUser] = useState<User_Type>();
 
   const dispatch = useDispatch<Dispatch<any>>();
-  const cartData = useSelector((state: any) => state.cart);
 
   useEffect(() => {
     handleGetProduct();
+    handleGetComment();
+    if (token) handleGetUserInfor();
   }, [productId]);
+
+  const handleGetUserInfor = () => {
+    localStorage.getItem("user");
+    setUser(JSON.parse(localStorage.getItem("user") || "{}"));
+  };
+
+  const handleGetComment = async () => {
+    try {
+      const { data } = await getProductComments(productId);
+      setComments(data.comments);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleGetProduct = async () => {
     try {
       const { data } = await getProduct(productId);
       setProduct(data);
+      handleGetProductByCategory(data.categoryId);
     } catch (error) {
       console.log(error);
     }
@@ -47,11 +74,46 @@ const Detail = () => {
       name: product.name,
       price: product.price,
       salePrice: product.salePrice,
-      finalPrice: product.salePrice ? product.salePrice : product.price,
+      totalPrice: product.salePrice ? product.salePrice : product.price,
       img: product.img,
       quantity: 1,
     };
-    dispatch(ADD_TO_CART(data));
+
+    dispatch(cartSlice.actions.add(data));
+  };
+
+  const handleGetProductByCategory = async (category: number) => {
+    try {
+      const { data } = await getProductByCategory(category);
+
+      setProducts(
+        data.products.filter(
+          (item: ProductType, index: number) =>
+            item.id !== +productId && index < 6
+        )
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSendComment = async (values: any) => {
+    try {
+      const commentData = {
+        productId: Number(productId),
+        userId: user?.id,
+        content: values.content,
+        username: user?.fullname,
+      };
+      await sendComment(commentData);
+      handleGetComment();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleAddComment = (values: any) => {
+    handleSendComment(values);
   };
 
   return (
@@ -115,17 +177,75 @@ const Detail = () => {
                   </ListBtnAddToCart>
                 </DetailProduct>
               </DetailSide>
+              {products.length > 0 && (
+                <RelativeProduct>
+                  <h2>Sản phẩm cùng loại</h2>
+                  <ListProduct>
+                    {products.map((item: ProductType, index) => (
+                      <ProductItem key={item.id}>
+                        <ProductImg>
+                          <img src={item.img} alt="" />
+                        </ProductImg>
+                        <ProductName to={`/product/${item.id}`}>
+                          {item.name}
+                        </ProductName>
+                        <ProductPrice>
+                          {item.salePrice ? (
+                            <>
+                              <span>{formatPrice(item.salePrice)}đ</span>
+                              <span>{formatPrice(item.price)}đ</span>
+                            </>
+                          ) : (
+                            <span>{formatPrice(item.price)}đ</span>
+                          )}
+                        </ProductPrice>
+                      </ProductItem>
+                    ))}
+                  </ListProduct>
+                </RelativeProduct>
+              )}
               <DescSide>
-                <SpecialDesc>
-                  <SpecialDescTitle>Đặc điểm nổi bật</SpecialDescTitle>
-                  <SpecialDescText>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Odio minima aut at amet placeat quos? Tempora, iure!
-                    Accusantium doloremque, totam est culpa obcaecati dolore ab
-                    quod dolorum, ad quis alias?
-                  </SpecialDescText>
-                </SpecialDesc>
+                {product.specialDesc && (
+                  <SpecialDesc>
+                    <SpecialDescTitle>Đặc điểm nổi bật</SpecialDescTitle>
+                    <SpecialDescText>
+                      {parse(product.specialDesc)}
+                    </SpecialDescText>
+                  </SpecialDesc>
+                )}
+                <SpecialDescText>{parse(product.longDesc)}</SpecialDescText>
               </DescSide>
+              <CommentSide>
+                <h2>Đánh giá</h2>
+                <List
+                  itemLayout="horizontal"
+                  dataSource={comments}
+                  locale={{ emptyText: "Không có đánh giá nào" }}
+                  renderItem={(item) => (
+                    <List.Item key={item.id}>
+                      <List.Item.Meta
+                        avatar={
+                          <Avatar src="https://img.freepik.com/free-vector/cute-cat-with-love-sign-hand-cartoon-illustration-animal-nature-concept-isolated-flat-cartoon-style_138676-3419.jpg?w=740&t=st=1660031275~exp=1660031875~hmac=cffacd3bd41650f6f3f9e6f6392b9d96c90b873daeb0ccf5f934770e4774c421" />
+                        }
+                        title={<p>{item.username}</p>}
+                        description={item.content}
+                      />
+                    </List.Item>
+                  )}
+                />
+                {token && (
+                  <CommentForm layout="inline" onFinish={handleAddComment}>
+                    <Form.Item name="content">
+                      <CustomInput placeholder="Nhập bình luận của bạn" />
+                    </Form.Item>
+                    <Form.Item>
+                      <CustomBtn type="primary" htmlType="submit">
+                        Gửi
+                      </CustomBtn>
+                    </Form.Item>
+                  </CommentForm>
+                )}
+              </CommentSide>
             </Container>
           </MainContent>
         </>
@@ -134,9 +254,103 @@ const Detail = () => {
   );
 };
 
-const SpecialDescText = styled.p`
+const CustomBtn = styled(Button)`
+  height: 40px;
+  width: 100px;
+  background: #ff3945;
+  border-radius: 5px;
+  border: none;
+
+  &:hover {
+    background: #ff3945;
+    box-shadow: 0px 3px 10px #ff3945;
+  }
+`;
+
+const CustomInput = styled(Input)`
+  height: 40px;
+  border-radius: 5px;
+  width: 500px;
+
+  &:hover {
+    border-color: #ff3945;
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+`;
+
+const CommentForm = styled(Form)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const CommentSide = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+
+  h2 {
+    font: 20px 400;
+    color: #444444;
+  }
+`;
+
+const ProductName = styled(Link)`
+  color: #0a263c;
+  width: 100%;
+  font-size: 16px;
+  margin-top: 15px;
+`;
+
+const ProductImg = styled.div`
+  width: 160px;
+  height: 160px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+const ProductItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  width: calc(100% / 5.2);
+  box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.1);
+  border-radius: 10px;
+  background: white;
+`;
+
+const ListProduct = styled.div`
+  display: flex;
+  gap: 0 20px;
+  width: 100%;
+`;
+
+const RelativeProduct = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+  position: relative;
+
+  h2 {
+    font: 20px 400;
+    color: #444444;
+  }
+`;
+
+const SpecialDescText = styled.div`
+  width: 100%;
   text-align: left;
   color: #444444;
+  margin-top: 20px;
 `;
 
 const SpecialDescTitle = styled.h3`

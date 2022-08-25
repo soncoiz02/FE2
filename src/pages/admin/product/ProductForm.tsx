@@ -9,7 +9,39 @@ import UploadImage from "../../../components/UploadImage";
 import { CategoryType } from "../../../types/category";
 import { ProductCreateType } from "../../../types/product";
 
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+
 const ProductForm = () => {
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+      ],
+      ["link", "code", "image"],
+      ["clean"],
+    ],
+  };
+
+  const formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "code",
+  ];
+
   const productId = useParams().id;
 
   const navigate = useNavigate();
@@ -21,7 +53,6 @@ const ProductForm = () => {
   const [form] = useForm();
 
   const onFinish = async (values: any) => {
-    console.log("Success:", values);
     if (!imageLink)
       return message.success("Đăng ảnh trước khi tạo sản phẩm", 5);
 
@@ -126,7 +157,7 @@ const ProductForm = () => {
             previewImg={previewImage}
             setPreviewImg={setPreviewImage}
           />
-          <CustomsFormItem>
+          <CustomsFormItem name="shortDesc">
             <ShortDescInput placeholder="Mô tả ngắn"></ShortDescInput>
           </CustomsFormItem>
         </ImgSide>
@@ -183,13 +214,12 @@ const ProductForm = () => {
                     message: "Giá khuyến mãi phải là số",
                   },
                   ({ getFieldValue }: any) => ({
-                    validator(_: any, value: any) {
-                      if (!value || +getFieldValue("price") > +value) {
-                        return Promise.resolve();
+                    validator: (_: any, value: any) => {
+                      if (value && +value > +getFieldValue("price")) {
+                        return Promise.reject(
+                          "Giá khuyến mãi phải nhỏ hơn giá gốc"
+                        );
                       }
-                      return Promise.reject(
-                        new Error("Giá khuyến mãi phải nhỏ hơn giá gốc")
-                      );
                     },
                   }),
                 ]}
@@ -219,12 +249,22 @@ const ProductForm = () => {
             </Col>
             <Col span={24}>
               <CustomsFormItem name="specialDesc" label="Đặc điểm nổi bật">
-                <CustomsInput.TextArea placeholder="Mô tả đặc điểm nổi bật" />
+                <ReactQuill
+                  theme="snow"
+                  modules={modules}
+                  formats={formats}
+                  placeholder="Mô tả đặc điểm nổi bật"
+                />
               </CustomsFormItem>
             </Col>
             <Col span={24}>
               <CustomsFormItem name="longDesc" label="Mô tả dài">
-                <CustomsInput.TextArea placeholder="Mô tả sản phẩm" />
+                <ReactQuill
+                  theme="snow"
+                  modules={modules}
+                  formats={formats}
+                  placeholder="Mô tả sản phẩm"
+                />
               </CustomsFormItem>
             </Col>
             <Col span={24}>
@@ -293,6 +333,20 @@ const CustomsFormItem = styled(Form.Item)`
     border-radius: 5px;
     resize: none;
     min-height: 100px;
+  }
+
+  .ql-toolbar.ql-snow {
+    border-radius: 5px 5px 0 0;
+    border: 1px solid #d9d9d9;
+  }
+
+  .ql-container {
+    border-radius: 0 0 5px 5px;
+    border: 1px solid #d9d9d9;
+  }
+
+  .ql-editor {
+    min-height: 200px;
   }
 `;
 

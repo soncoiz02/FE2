@@ -10,10 +10,12 @@ import {
 } from "../../../redux/action";
 import { CartType } from "../../../types/product";
 import { formatPrice } from "../../../utils/formatPrice";
+import cartSlice from "./CartSlice";
 
 const Cart = () => {
   const [quantity, setQuantity] = useState(1);
-  const cartData = useSelector((state: any) => state.cart);
+  const { cart } = useSelector((state: any) => state);
+
   const dispatch = useDispatch();
 
   const handleUpdateQuantity = (type: string, id: number, quantity: number) => {
@@ -22,9 +24,9 @@ const Cart = () => {
         handleDeleteItem(id);
         return;
       }
-      dispatch(DECREASE_QUANTITY(id));
+      dispatch(cartSlice.actions.decrease(id));
     } else if (type === "plus") {
-      dispatch(INCREASE_QUANTITY(id));
+      dispatch(cartSlice.actions.increase(id));
     }
   };
 
@@ -32,7 +34,7 @@ const Cart = () => {
     if (
       window.confirm("Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?")
     ) {
-      return dispatch(DELETE_ITEM(id));
+      return dispatch(cartSlice.actions.delete(id));
     }
   };
 
@@ -47,9 +49,9 @@ const Cart = () => {
           <Title>Giỏ hàng</Title>
         </CartHeader>
         <ListCart>
-          {cartData?.length > 0 &&
-            cartData.map((item: CartType) => (
-              <CartItem>
+          {cart?.cart?.length > 0 &&
+            cart.cart.map((item: CartType, index: number) => (
+              <CartItem key={index}>
                 <ImgSide>
                   <img src={item.img} alt="" />
                 </ImgSide>
@@ -90,7 +92,7 @@ const Cart = () => {
                   </Quantity>
                   <ProductTotalPrice>
                     <p>Tổng tiền: </p>
-                    <p>{formatPrice(item.finalPrice)}đ</p>
+                    <p>{formatPrice(item.totalPrice)}đ</p>
                   </ProductTotalPrice>
                 </DetailSide>
               </CartItem>
@@ -99,14 +101,7 @@ const Cart = () => {
         <TotalPriceBox>
           <TotalPrice>
             <p>Tổng tiền tạm tính</p>
-            <p>
-              {formatPrice(
-                cartData?.reduce((total: number, item: CartType) => {
-                  return total + item.finalPrice;
-                }, 0)
-              )}
-              đ
-            </p>
+            <p>{formatPrice(cart?.total)}đ</p>
           </TotalPrice>
           <BtnOrder>Tiến hành đặt hàng</BtnOrder>
           <BtnChooseAnother to="/">Chọn thêm sản phẩm khác</BtnChooseAnother>

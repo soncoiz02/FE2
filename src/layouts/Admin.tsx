@@ -1,41 +1,28 @@
 import {
   AppstoreOutlined,
   LaptopOutlined,
+  LogoutOutlined,
   PhoneOutlined,
   SearchOutlined,
   SoundOutlined,
   TabletOutlined,
 } from "@ant-design/icons";
 import { Input, Layout, Menu } from "antd";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import logo from "../assets/img/logo.png";
 
 import type { MenuProps } from "antd";
 
 import styled from "styled-components";
+import { setCookie } from "../utils/cookie";
 
 const { Header, Content, Sider } = Layout;
 
 const items: MenuProps["items"] = [
   {
-    key: "phone",
+    key: "product",
     icon: <PhoneOutlined />,
-    label: <Link to={"/admin/product"}>Điện thoại</Link>,
-  },
-  {
-    key: "laptop",
-    icon: <LaptopOutlined />,
-    label: "Laptop",
-  },
-  {
-    key: "tablet",
-    icon: <TabletOutlined />,
-    label: "Máy tính bảng",
-  },
-  {
-    key: "sound",
-    icon: <SoundOutlined />,
-    label: "Âm thanh",
+    label: <Link to={"/admin/product"}>Sản phẩm</Link>,
   },
   {
     key: "category",
@@ -47,11 +34,12 @@ const items: MenuProps["items"] = [
 const HeaderCustoms = styled(Header)`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   line-height: 0;
   background-color: #00b0d7;
 `;
 
-const LogoWrapper = styled.div`
+const LogoWrapper = styled(Link)`
   width: 60px;
   height: 60px;
 `;
@@ -63,6 +51,7 @@ const Logo = styled.img`
 `;
 
 const SearchInput = styled(Input)`
+  width: 800px;
   border-radius: 10px;
   overflow: hidden;
 
@@ -110,14 +99,35 @@ const LayoutWhite = styled(Layout)`
   background: #ffffff;
 `;
 
+const UserSide = styled.div`
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: 0 10px;
+  font-size: 16px;
+`;
+
 const AdminLayout = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setCookie("token", "", -1);
+    setCookie("user", "", -1);
+    navigate("/");
+  };
   return (
     <Layout>
       <HeaderCustoms className="header">
-        <LogoWrapper>
+        <LogoWrapper to="/">
           <Logo src={logo} />
         </LogoWrapper>
         <SearchInput addonBefore={<SearchOutlined />} />
+        <UserSide onClick={() => handleLogout()}>
+          <LogoutOutlined />
+          Đăng xuất
+        </UserSide>
       </HeaderCustoms>
       <CustomLayout>
         <CustomsSider width={250}>
